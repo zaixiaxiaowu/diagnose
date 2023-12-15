@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI影像辅助诊断系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+{% extends "index.html" %}
+
+<!-- Left -->
+{% block Left %}
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link waves-effect" href="#">Skin Cancer</a>
+    </li>
+
+
+</ul>
+{% endblock %}
+<!-- Left -->
+
+<!-- Sidebar -->
+{% block Sidebar %}
+<div class="sidebar-fixed position-fixed">
+
+    <div style="text-align:center;width:180px;height:200px;line-height:200px;border:greensolid1px;">
+        <img src="/static/img/Logo.png" alt="" width="180px" height="180px"
+             style="margin=0 auto;display:inline-block;vertical-align:middle;">
+    </div>
+
+    <div class="list-group list-group-flush">
+        <a href="../index/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-tag mr-3"></i>主页</a>
+        <a href="../skin/" class="list-group-item list-group-item-success">
+            <i class="fas fa-user-md mr-3"></i>皮肤肿瘤诊断</a>
+        <a href="../chest/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-x-ray mr-3"></i>肺部炎症诊断</a>
+        <a href="../stomach/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-microscope mr-3"></i>肠胃息肉诊断</a>
+        <a href="../brain/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-brain mr-3"></i>脑部肿瘤诊断</a>
+
+    </div>
+
+</div>
+{% endblock %}
+<!-- Sidebar -->
+
+<!--Main layout-->
+{% block Main_layout %}
+<main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+
+        <h3 style="font-family:华文新魏;text-align:center">诊断结果</h3>
+        <br/>
+        <div class="shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 50%;margin: 0 auto;">
+            <img src="{{ picture.photo.url }}" class="rounded mx-auto d-block" alt="..."
+                 style="width: 100%;margin: 0 auto;">
+            <figcaption class="figure-caption" style="text-align:center;margin: 20px;font-size:16px;font-weight:600">
+                疾病类型：{{ label }}
+            </figcaption>
+            <figcaption class="figure-caption" style="text-align:center;margin: 20px;font-size:16px;font-weight:600">
+                置信度：{{confidence}}
+            </figcaption>
+        </div>
+        <div>
+            <button style="display: block; margin: 0 auto;color:white;background-color:SeaGreen;font-weight:700"
+                    class="btn changebrief" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWidthExample"
+                    aria-expanded="false" aria-controls="collapseWidthExample">
+                点击查看详细报告
+            </button>
+        </div>
+
+        <div style="width: 60vw;display: block; margin: 20px auto">
+            <div class="collapse collapse-horizontal" id="collapseWidthExample"
+                 style="width: 60vw;">
+                <div class="card card-body  shadow p-3 mb-5 bg-body-tertiary rounded"
+                     style="width: 60vw; display: block; margin: 0 auto">
+                    {{result}}
+                    温馨提示：该诊断报告仅供参考，最终以医生诊断结果为准！
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+{% endblock %}
+</body>
+</html>
+
+

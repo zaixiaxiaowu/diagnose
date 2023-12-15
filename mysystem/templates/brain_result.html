@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>医疗影像辅助诊断系统</title>
+</head>
+<body>
+{% extends "index.html" %}
+
+<!-- Left -->
+{% block Left %}
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link waves-effect" href="#">Brain Tumor</a>
+    </li>
+
+
+</ul>
+{% endblock %}
+<!-- Left -->
+
+<!-- Sidebar -->
+{% block Sidebar %}
+<div class="sidebar-fixed position-fixed">
+
+    <a class="logo-wrapper waves-effect">
+        <img src="/static/img/logo.png" class="img-fluid" alt="" width="100px" height="100px">
+    </a>
+
+    <div class="list-group list-group-flush">
+        <a href="../index/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-tag mr-3"></i>主页</a>
+        <a href="../skin/" class="list-group-item active waves-effect">
+            <i class="fas fa-user-md mr-3"></i>皮肤肿瘤诊断</a>
+        <a href="../chest/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-x-ray mr-3"></i>肺部炎症诊断</a>
+        <a href="../stomach/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-microscope mr-3"></i>肠胃息肉诊断</a>
+        <a href="../brain/" class="list-group-item list-group-item-success">
+            <i class="fas fa-brain mr-3"></i>脑部肿瘤诊断</a>
+
+    </div>
+
+</div>
+{% endblock %}
+<!-- Sidebar -->
+
+<!--Main layout-->
+{% block Main_layout %}
+<main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+
+        <!-- Heading -->
+        <div class="card mb-4 wow fadeIn">
+
+            <!--Card content-->
+            <!--            <div class="card-body d-sm-flex justify-content-between">-->
+
+            <h1>脑部肿瘤诊断结果</h1>
+
+            <p>上传的图片是: {{ picture.photo.name }}</p>
+            <br/>
+
+            <img src="{{ picture.photo.url }}" , height="200" , width="300"/>
+            <br>
+            <img src="{% url 'show:image' param.id %}" alt="{{param.id}}"/>
+
+
+        </div>
+
+
+    </div>
+</main>
+{% endblock %}
+</body>
+</html>
+
+

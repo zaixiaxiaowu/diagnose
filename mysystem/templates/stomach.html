@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI影像辅助诊断系统</title>
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+{% extends "index.html" %}
+
+<!-- Left -->
+{% block Left %}
+<ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link waves-effect" href="#">Gastrointestinal polyps</a>
+    </li>
+
+
+</ul>
+{% endblock %}
+<!-- Left -->
+
+<!-- Sidebar -->
+{% block Sidebar %}
+<div class="sidebar-fixed position-fixed">
+
+    <div style="text-align:center;width:180px;height:200px;line-height:200px;border:greensolid1px;">
+        <img src="/static/img/Logo.png" alt="" width="180px" height="180px"
+             style="margin=0 auto;display:inline-block;vertical-align:middle;">
+    </div>
+
+    <div class="list-group list-group-flush">
+        <a href="../index/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-tag mr-3"></i>主页</a>
+        <a href="../skin/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-user-md mr-3"></i>皮肤肿瘤诊断</a>
+        <a href="../chest/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-x-ray mr-3"></i>肺部炎症诊断</a>
+        <a href="../stomach/" class="list-group-item list-group-item-success">
+            <i class="fas fa-microscope mr-3"></i>肠胃息肉诊断</a>
+        <a href="../brain/" class="list-group-item list-group-item-action waves-effect">
+            <i class="fas fa-brain mr-3"></i>脑部肿瘤诊断</a>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block Main_layout %}
+<main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+
+        <div class="row">
+
+            <div class="col-sm-4" style="background-color:;position:relative;margin:0 auto;text-align:center">
+                <h3 style="text-align:center;font-family:'华文新魏">辅助诊断</h3>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <button class="btn changebrief" type="submit"
+                            style="color:white;background-color:SeaGreen;font-weight:700;position:relative;top:25px">
+                        上传图片
+                    </button>
+                    <div class="loading">
+                        <div class="loadingOne" style="display: none">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <script>
+                               $('button').click(function(){
+                                $('button').css({'background':'#8E8E8E'})
+                                $(".loading").show();
+                                $(".loadingOne").css("display","block")
+                                loadingOne.css("display", "")
+                            })
+
+
+
+                        </script>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-sm-8" style="background-color:;text-align:center">
+                <h3 style="text-align:center;font-family:'华文新魏">操作演示</h3>
+                <video src="/static/img/help.mp4" controls="controls" style="margin: 0 auto" muted
+                       autoplay="autoplay" loop="loop" width="600" height="240"></video>
+            </div>
+        </div>
+
+        <h3 style="text-align:center;font-family:'华文新魏">病情分析案例</h3>
+        <div class="card mb-4 wow fadeIn">
+            <img src="/static/img/s2.png" style="height:400px;width:800px;margin: 0 auto">
+        </div>
+
+        <h3 style="text-align:center;font-family:'华文新魏">AI模型训练情况</h3>
+        <div class="card mb-4 wow fadeIn">
+            <img src="/static/img/s1.png" alt="">
+        </div>
+
+        <h3 style="text-align:center;font-family:'华文新魏">AI模型演示视频</h3>
+        <div class="card mb-4 wow fadeIn">
+            <video src="/static/img/stomach3.mp4" controls="controls"></video>
+        </div>
+
+
+    </div>
+</main>
+{% endblock %}
+</body>
+</html>
+
+
